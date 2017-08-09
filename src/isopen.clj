@@ -60,7 +60,7 @@
   [event]
   (when (and (= (event :type) "desktop_notification")
              (= (event :channel channel_id)))
-    (responce (event :content))))
+    (future (responce (event :content)))))
 
 (defn -main
   [& args]
