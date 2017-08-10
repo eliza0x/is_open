@@ -1,0 +1,10 @@
+[Unit]
+Description=isopen bot
+After=syslog.target network.target
+
+[Service]
+ExecStart=/usr/bin/java -jar /opt/isopen.jar
+ExecReload=/bin/kill -HUP $MAINPID
+
+[Install]
+WantedBy=multi-user.target
