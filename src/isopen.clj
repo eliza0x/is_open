@@ -5,7 +5,12 @@
   (:require [clj-slack-client.rtm-transmit :as chat]))
 
 ;; サーバーとチャンネルの設定-----
-(def api_token (System/getenv "SLACK_TOKEN"))
+(def api_token 
+  (let [env (System/getenv "SLACK_TOKEN")]
+    (when (= nil env)
+      (throw (Exception. "$SLACK_TOKEN is null")))
+    env))
+
 (def channel_id "C55V4MN3S") 
 (def sensor_server_addres "http://192.168.2.237")
 ;--------------------------------
